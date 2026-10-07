@@ -28,7 +28,13 @@ membersRouter.get('/:memberId/wallet', async (req, res, next) => {
       res.status(404).json({ error: 'wallet not found' });
       return;
     }
-    res.json({ id: wallet.id, memberId: wallet.memberId, balance: wallet.balance });
+    res.json({
+      id: wallet.id,
+      memberId: wallet.memberId,
+      balance: wallet.balance,
+      turnoverRequired: wallet.turnoverRequired,
+      turnoverAccrued: wallet.turnoverAccrued,
+    });
   } catch (err) {
     next(err);
   }
