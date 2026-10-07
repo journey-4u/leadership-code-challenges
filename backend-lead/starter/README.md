@@ -39,6 +39,18 @@ src/
 test/                    # add your tests here
 ```
 
+## Endpoints added for the take-home
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `POST` | `/deposits` | Create a `Pending` deposit, returns `pspRef` |
+| `POST` | `/psp/callbacks` | Mock PSP webhook; credits exactly once |
+| `POST` | `/wallets/:walletId/wagers` | Debit + turnover accrual |
+| `POST` | `/withdrawals` | Turnover-locked withdrawal, debits immediately |
+| `GET` | `/members/:memberId/wallet` | Balance and turnover counters |
+
+Design notes: [`DECISIONS.md`](DECISIONS.md) (trade-offs, locking, schema) and [`DESIGN-PSP.md`](DESIGN-PSP.md) (Part B).
+
 ## Conventions to keep
 
 - Money never touches JS `number`. Strings at the boundaries, BigNumber in between.
