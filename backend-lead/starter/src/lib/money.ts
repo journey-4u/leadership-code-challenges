@@ -14,3 +14,8 @@ export function dec(value: string | number | BigNumber): BigNumber {
 }
 
 export const ZERO = dec(0);
+
+// Same 18-place form the pg driver returns for DECIMAL(36,18).
+export function toMoneyString(value: BigNumber): string {
+  return value.toFixed(18);
+}
